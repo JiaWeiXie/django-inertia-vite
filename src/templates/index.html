@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load django_vite %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  {% if DEBUG %}
+    <script type="module">
+      import RefreshRuntime from 'http://localhost:3000/@react-refresh'
+
+      RefreshRuntime.injectIntoGlobalHook(window)
+      window.$RefreshReg$ = () => {
+      }
+      window.$RefreshSig$ = () => (type) => type
+      window.__vite_plugin_react_preamble_installed__ = true
+    </script>
+    {% vite_hmr_client %}
+  {% endif %}
+  {% vite_asset 'src/main.tsx' %}
+</head>
+<body>
+
+{% block inertia %}{% endblock %}
+
+</body>
+</html>
